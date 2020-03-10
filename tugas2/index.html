@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Materi 2 - Komputasi Numerik</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Materi 2";
+    var mkdocs_page_input_path = "tugas2.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Komputasi Numerik</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../materi/">Materi 1</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Materi 2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#metode-newton">Metode Newton</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#menyusun-algoritma-dan-pemrograman-newton-rhapson">Menyusun Algoritma dan Pemrograman Newton Rhapson</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-program">Code Program</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Komputasi Numerik</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Materi 2</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="program-newton-raphson-pada-fungsi-non-linear">Program Newton Raphson pada Fungsi Non Linear</h1>
+<h3 id="metode-newton"><strong>Metode Newton</strong></h3>
+<p>Dalam analisis numerik, <strong>metode Newton</strong> (juga dikenal sebagai <strong>metode Newton-Raphson</strong>), yang mendapat nama dari Isaac Newton dan Joseph Raphson, merupakan metode yang paling dikenal untuk mencari hampiran terhadap akar fungsi riil . Metode Newton sering konvergen dengan cepat, terutama bila iterasi dimulai "cukup dekat" dengan akar yang diinginkan. Namun bila iterasi dimulai jauh dari akar yang dicari, metode ini dapat meleset tanpa peringatan. Implementasi metode ini biasanya mendeteksi dan mengatasi kegagalan konvergensi.</p>
+<p>Newton Raphson adalah Metode pencarian akar suatu fungsi <em>$f(x)$</em> dengan pendekatan satu titik, dimana fungsi <em>$f(x)$</em> mempunyai turunan. Metode ini dianggap lebih mudah dari <strong><em>Metode Bagi Dua</em></strong> (Bisection Method) karena metode ini menggunakan pendekatan satu titik sebagai titik awal. Semakin dekat titik awal yang kita pilih dengan akar sebenarnya, maka semakin cepat konvergen ke akarnya.</p>
+<p><img alt="grafik_newton" src="../tugas2.assets/grafik_newton.png" /></p>
+<p>Prosedur Metode Newton :</p>
+<p>menentukan <em>$x_0$</em> sebagai titik awal, kemudian menarik garis lurus (misal garis $\imath$ ) yang menyinggung titik <em>$f(x_0)$</em> . Hal ini berakibat garis $\imath$ memotong sumbu <em>$x$</em> di titik <em>$x_1$</em> Setelah itu diulangi langkah sebelumnya tapi sekarang <em>$x_1$</em> dianggap sebagai titik awalnya. Dari mengulang langkah-langkah sebelumnya akan mendapatkan <em>$x_2 , x_3 , ... , x_n$</em> dengan <em>$x_n$</em> yang diperoleh adalah bilangan riil yang merupakan akar atau mendekati akar yang sebenarnya.</p>
+<p>Perhatikan gambar diatas untuk menurunkan rumus <strong>Metode Newton-Raphson</strong></p>
+<p>persamaan garis $\imath : y - y_0 = m(x - x_0)$</p>
+<p>$$
+y - f(x_0) = f'(x_0)(x - x_0)
+$$</p>
+<p><em>$x_1$</em> perpotongan garis $\imath$ dengan sumbu - <em>x</em>
+$$
+0 - f(x_0) = f'(x_0)(x - x_0)
+$$</p>
+<p><em>y = 0</em> dan <em>x = $x_1$</em> maka koordinat titik (<em>$x_1$</em>,0)</p>
+<p>$$
+- \frac{f(x_0)}{f'(x_0)} = (x_1 - x_0)
+$$</p>
+<p>sehingga di dapat sebuah rumus :</p>
+<p>$$
+x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} , x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}, ... , x_n = x_{n-1} - \frac{f(x_{n-1})}{f'(x_{n-1})}
+$$</p>
+<hr />
+<h3 id="menyusun-algoritma-dan-pemrograman-newton-rhapson"><strong>Menyusun Algoritma dan Pemrograman Newton Rhapson</strong></h3>
+<p>dari rumus yang kita dapat diatas kita dapat menyusun sebuah algoritma yang nantinya akan dibuat menjadi sebuah program. Algoritma menyusun akar - akar <em>$f(x) = 0$</em> sebagai berikut :</p>
+<ol>
+<li>Didefinisikan fungsi <em>$f$</em> dengan <em>$f(x)$</em> dan <em>$f'(x)$</em></li>
+<li>Ditentukan Epsilon sebagai Toleransi kesalahan serta iterasi maksimum untuk <em>Stopping Condition</em></li>
+<li>Dipilih tebakan awal <em>$x_0$</em> </li>
+<li>Dihitung <em>f($x_0$)</em> dan <em>f'($x_0$)</em></li>
+<li>Dihitung <em>$x_b = x_0 - \frac{f(x_0)}{f'(x_0)}f'(x_0) \neq 0$</em> .  jika <em>$f'(x_0) = 0$</em> kembali ke langkah - 3</li>
+<li>Jika <em>$\left | x_b - x_0 \right | &lt; \varepsilon$</em> . itersasi lebih dari iterasi maksimum tulis <em>$x_{hampiran} = x_b$</em> sebagai hasil hampiran akar; jika tidak, lanjutkan ke langkah berikutnya.</li>
+<li>Ganti nilai <em>$x_0$</em> dengan <em>$x_0 = x_b$</em> dan kembali ke langkah-4</li>
+</ol>
+<hr />
+<h3 id="code-program"><strong>Code Program</strong></h3>
+<p>dari algoritma diatas , kita dapat menyusun sebuah program seperti berikut.</p>
+<pre><code class="python">import math
+e = 2.71828
+
+def fungsi(x):
+    x = float((e**x) - (4*x))
+    return x
+
+def fungsiturunan(x):
+    x = float((e**x) - (4))
+    return x
+
+x = float(input('Masukkan nilai awal = '))
+error = float(input('Masukkan nilai error = '))
+perulangan = int(input('Masukkan maksimal pengulangan = '))
+
+iterasi = 0
+selisih = error+1
+while iterasi &lt;= perulangan  and selisih&gt;error :
+    iterasi += 1
+    f_2 = x - (fungsi(x)/fungsiturunan(x))
+    selisih = math.fabs(f_2 - x)
+    x = f_2
+    print(&quot;Iterasi ke = &quot;,iterasi,&quot;, x = &quot;,f_2, &quot;, f(&quot;,f_2,&quot;) = &quot;,fungsi(f_2),&quot;, selisih = &quot;,error)
+    if iterasi &lt;= perulangan:
+        print(&quot;Perulangan Mencapai Batas Maksimal dengan hasil = &quot;, f_2)
+    else :
+        print(&quot;Toleransi tidak terpenuhi&quot;)
+
+</code></pre>
+
+<p>Dengan Output sebagai berikut :</p>
+<pre><code class="python">Masukkan nilai awal = 0
+Masukkan nilai error = 0.0001
+Masukkan maksimal pengulangan = 20
+Iterasi ke =  1 , x =  0.3333333333333333 , f( 0.3333333333333333 ) =  0.06227877883196098 , selisih =  0.0001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.3333333333333333
+Iterasi ke =  2 , x =  0.35724635301940616 , f( 0.35724635301940616 ) =  0.0004022049593612742 , selisih =  0.0001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.35724635301940616
+Iterasi ke =  3 , x =  0.35740281572145605 , f( 0.35740281572145605 ) =  1.734656973617632e-08 , selisih =  0.0001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.35740281572145605
+Iterasi ke =  4 , x =  0.3574028224700733 , f( 0.3574028224700733 ) =  -6.439293542825908e-15 , selisih =  0.0001
+Perulangan Mencapai Batas Maksimal dengan hasil =  0.3574028224700733
+</code></pre>
+
+<p>Penjelasan :</p>
+<ol>
+<li>Importh Library math</li>
+<li>karena kita menggunakan contoh fungsi <em>$f(x) = e^x - 4X$</em> maka kita membuat sebuah fungsi yang sesuai , dan juga fungsi turunannya yaitu <em>$f'(x) = e^x - 4$</em></li>
+<li>Membuat sebuah inputan untuk X , Error / Epsilon , serta Maksimal perulangan untuk stopping condition</li>
+<li>lalu deklarasikan iterasi = 0 untuk perulangan yang ke 0  nantinya dan akan ditambah setiap kali perulangan</li>
+<li>deklarasikan selisih untuk <em>$x_b - x_0$</em>  untuk perbandingan</li>
+<li>lakukan perulangan dengan kondisi iterasi kurang dari sama dengan inputan maksimal iterasi dan selisih lebih dari error / epsilon</li>
+<li>hitung <em>$x_b$</em> dengan rumus yang sudah kita dapatkan sebelumnya</li>
+<li>lalu lakukan perbandingan jika mencapai nilai <em>True</em> maka toleransi tidak terpenuhi namun perulangan sudah mencapai batas</li>
+<li>jika pengecekan selisih &gt; error bernilai bernilai <em>True</em> maka toleransi akan terpenuhi dengan nilai error serta fungsi x pada iterasi ke n</li>
+</ol>
+<hr />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$$','$$']]}
+});
+</script>
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../materi/" class="btn btn-neutral" title="Materi 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../materi/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
