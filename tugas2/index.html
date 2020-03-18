@@ -67,6 +67,10 @@
     </ul>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas3/">Materi 3</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -102,21 +106,21 @@
                 <h1 id="program-newton-raphson-pada-fungsi-non-linear">Program Newton Raphson pada Fungsi Non Linear</h1>
 <h3 id="metode-newton"><strong>Metode Newton</strong></h3>
 <p>Dalam analisis numerik, <strong>metode Newton</strong> (juga dikenal sebagai <strong>metode Newton-Raphson</strong>), yang mendapat nama dari Isaac Newton dan Joseph Raphson, merupakan metode yang paling dikenal untuk mencari hampiran terhadap akar fungsi riil . Metode Newton sering konvergen dengan cepat, terutama bila iterasi dimulai "cukup dekat" dengan akar yang diinginkan. Namun bila iterasi dimulai jauh dari akar yang dicari, metode ini dapat meleset tanpa peringatan. Implementasi metode ini biasanya mendeteksi dan mengatasi kegagalan konvergensi.</p>
-<p>Newton Raphson adalah Metode pencarian akar suatu fungsi <em>$f(x)$</em> dengan pendekatan satu titik, dimana fungsi <em>$f(x)$</em> mempunyai turunan. Metode ini dianggap lebih mudah dari <strong><em>Metode Bagi Dua</em></strong> (Bisection Method) karena metode ini menggunakan pendekatan satu titik sebagai titik awal. Semakin dekat titik awal yang kita pilih dengan akar sebenarnya, maka semakin cepat konvergen ke akarnya.</p>
+<p>Newton Raphson adalah Metode pencarian akar suatu fungsi $f(x)$ dengan pendekatan satu titik, dimana fungsi $f(x)$ mempunyai turunan. Metode ini dianggap lebih mudah dari <strong><em>Metode Bagi Dua</em></strong> (Bisection Method) karena metode ini menggunakan pendekatan satu titik sebagai titik awal. Semakin dekat titik awal yang kita pilih dengan akar sebenarnya, maka semakin cepat konvergen ke akarnya.</p>
 <p><img alt="grafik_newton" src="../tugas2.assets/grafik_newton.png" /></p>
 <p>Prosedur Metode Newton :</p>
-<p>menentukan <em>$x_0$</em> sebagai titik awal, kemudian menarik garis lurus (misal garis $\imath$ ) yang menyinggung titik <em>$f(x_0)$</em> . Hal ini berakibat garis $\imath$ memotong sumbu <em>$x$</em> di titik <em>$x_1$</em> Setelah itu diulangi langkah sebelumnya tapi sekarang <em>$x_1$</em> dianggap sebagai titik awalnya. Dari mengulang langkah-langkah sebelumnya akan mendapatkan <em>$x_2 , x_3 , ... , x_n$</em> dengan <em>$x_n$</em> yang diperoleh adalah bilangan riil yang merupakan akar atau mendekati akar yang sebenarnya.</p>
+<p>menentukan $x_0$ sebagai titik awal, kemudian menarik garis lurus (misal garis $\imath$ ) yang menyinggung titik $f(x_0)$ . Hal ini berakibat garis $\imath$ memotong sumbu $x$ di titik $x_1$ Setelah itu diulangi langkah sebelumnya tapi sekarang $x_1$ dianggap sebagai titik awalnya. Dari mengulang langkah-langkah sebelumnya akan mendapatkan $x_2 , x_3 , ... , x_n$ dengan $x_n$ yang diperoleh adalah bilangan riil yang merupakan akar atau mendekati akar yang sebenarnya.</p>
 <p>Perhatikan gambar diatas untuk menurunkan rumus <strong>Metode Newton-Raphson</strong></p>
 <p>persamaan garis $\imath : y - y_0 = m(x - x_0)$</p>
 <p>$$
 y - f(x_0) = f'(x_0)(x - x_0)
 $$</p>
-<p><em>$x_1$</em> perpotongan garis $\imath$ dengan sumbu - <em>x</em>
+<p>$x_1$ perpotongan garis $\imath$ dengan sumbu - $x$
 $$
 0 - f(x_0) = f'(x_0)(x - x_0)
 $$</p>
-<p><em>y = 0</em> dan <em>x = $x_1$</em> maka koordinat titik (<em>$x_1$</em>,0)</p>
-<p>$$
+<p>$y = 0$ dan $x=x_1$ maka koordinat titik ($x_1$,0)
+$$
 - \frac{f(x_0)}{f'(x_0)} = (x_1 - x_0)
 $$</p>
 <p>sehingga di dapat sebuah rumus :</p>
@@ -210,6 +214,8 @@ tex2jax: {inlineMath: [['$$','$$']]}
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../tugas3/" class="btn btn-neutral float-right" title="Materi 3">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
       
         <a href="../materi/" class="btn btn-neutral" title="Materi 1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
@@ -239,6 +245,8 @@ tex2jax: {inlineMath: [['$$','$$']]}
       
         <span><a href="../materi/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../tugas3/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
