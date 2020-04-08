@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Materi 5 - Komputasi Numerik</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Materi 5";
+    var mkdocs_page_input_path = "tugas5.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Komputasi Numerik</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../materi/">Materi 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas2/">Materi 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas3/">Materi 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas4/">Materi 4</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Materi 5</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Komputasi Numerik</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Materi 5</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="richardson-extrapolation">Richardson extrapolation</h1>
+<blockquote>
+<p>Dalam analisis numerik, Richardson Extrapolation adalah metode percepatan urutan, yang digunakan untuk meningkatkan laju konvergensi suatu urutan.</p>
+<p>Richardson Extrapolation termasuk integrasi Romberg, yang menerapkan ekstrapolasi Richardson pada aturan trapesium, dan algoritma Bulirsch-Stoer untuk menyelesaikan persamaan diferensial biasa. Richardson Extrapolation merupakan salah satu teknik menggabungkan dua nilai perkiraan yang dihitung diperoleh dengan menggunakan rumus yang sama atau metode dengan dua ukuran langkah yang berbeda, untuk mendapatkan metode orde tinggi yang menyediakan lebih dekat perkiraan jumlah tertentu.</p>
+</blockquote>
+<h1 id="teori">Teori</h1>
+<p>Dalam rumus :</p>
+<p><strong><em>( f (x + h) - f (x - h) ) / (2 h)</em></strong></p>
+<p>untuk nilai h yang sangat kecil, dua fungsi evaluasi <em>f (x + h)</em> dan <em>f (x - h)</em> akan menjadi kira-kira sama, dan oleh karena itu pembatalan subtraktif akan terjadi. Oleh karena itu, tidak disarankan untuk menggunakan nilai h yang semakin kecil.</p>
+<p>Kita dapat mencoba untuk memperkirakan nilai tepat <em>e</em> dengan perkiraan <em>a(h)</em>. Dalam hal ini, <em>e</em> adalah turunan dari <em>f (1) (x)</em> dan perkiraannya adalah <em>( h ) = (f (x + h) - f (x - h)) / (2 h)</em>. Misalkan sekarang bahwa kesalahan aproksimasi didefinisikan oleh serangkaian bentuk Taylor :
+$$
+e=a(h)+Kh^n+o(h^n)
+$$
+Apabila menggunakan <em>h / 2</em> :
+$$
+e=a(\frac{h}{2})+K(\frac{h}{2})n+o((\frac{h}{2})^n)
+$$</p>
+<p>$$
+=a(\frac{h}{2})+\frac{K}{2n}h^n+o(h^n)
+$$</p>
+<p>Mengalikan kedua ekspresi ini dengan 2<em>n</em> dan mengurangi hasil persamaan pertama
+$$
+2n^e-e=2na(\frac{h}{2}-a(h)+\frac{K}{2n}h^n+Kh^n+o(h^n))
+$$
+Perhatikan bahwa istilah h^n​ dibatalkan dan kita dibiarkan dengan
+$$
+(2n-1)e=2na(\frac{h}{2})-a(h)+o(h^n)
+$$
+Jika kita melihat seri Taylor lengkap untuk rumus perbedaan-terpusat yang terpusat, kita perhatikan bahwa istilah kesalahannya dalam bentuk Knhn. Dapat kita tulis dengan :
+$$
+K1=-1/6f(3)(x)h^2, etc.
+$$</p>
+<h1 id="contoh-program"><strong>Contoh Program</strong></h1>
+<pre><code class="python">from math import *
+def zeros(n,m):
+    Z=[]
+    for i in range(n):
+        Z.append([0]*m)
+    return Z
+
+def D(Func,a,h):
+        return (Func(a+h)-Func(a-h))/(2*h)
+
+def Richardson_dif(func,a): 
+    '''Richardson extrapolation method for numerical calculation of first derivative '''
+    k=9 
+    L=zeros(k,k)
+    for I in range(k):
+        L[I][0]=D(func,a,1/(2**(I+1)))
+    for j in range(1,k):
+        for i in range(k-j):
+            L[i][j]=((4**(j))*L[i+1][j-1]-L[i][j-1])/(4**(j)-1)
+    return L[0][k-1]
+
+print('&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DIFERENSIASI NUMERIK DARI &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;')
+print(&quot;=======================================================================&quot;)
+print('f = -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 dengan x = 0.5')
+print(&quot;=======================================================================&quot;)
+print('%04.20f'%Richardson_dif(lambda x: -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 ,0.5))
+print(&quot;=======================================================================&quot;)
+print('diff(2**cos(pi+sin(x)) dengan x = pi/2 adalah = %04.20f'%Richardson_dif(lambda x: 2**cos(pi+sin(x)),pi/3))
+</code></pre>
+
+<h1 id="hasil-running"><strong>Hasil Running</strong></h1>
+<pre><code class="python">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; DIFERENSIASI NUMERIK DARI &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+=======================================================================
+f = -0.1*x**4-0.15*x**3-0.5*x**2-0.25*x+1.2 dengan x = 0.5
+=======================================================================
+-0.91250000000000530687
+=======================================================================
+diff(2**cos(pi+sin(x)) dengan x = pi/2 adalah = 0.16849558398154249050
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>Sekian terimakasih Semoga bermanfaat!</p>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$$','$$']]}
+});
+</script>
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../tugas4/" class="btn btn-neutral" title="Materi 4"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../tugas4/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

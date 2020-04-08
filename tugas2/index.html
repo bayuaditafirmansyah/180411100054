@@ -75,6 +75,10 @@
                     <li class="toctree-l1"><a class="reference internal" href="../tugas4/">Materi 4</a>
                     </li>
                 </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas5/">Materi 5</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
@@ -133,14 +137,14 @@ x_1 = x_0 - \frac{f(x_0)}{f'(x_0)} , x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}, ... , x
 $$</p>
 <hr />
 <h3 id="menyusun-algoritma-dan-pemrograman-newton-rhapson"><strong>Menyusun Algoritma dan Pemrograman Newton Rhapson</strong></h3>
-<p>dari rumus yang kita dapat diatas kita dapat menyusun sebuah algoritma yang nantinya akan dibuat menjadi sebuah program. Algoritma menyusun akar - akar <em>$f(x) = 0$</em> sebagai berikut :</p>
+<p>dari rumus yang kita dapat diatas kita dapat menyusun sebuah algoritma yang nantinya akan dibuat menjadi sebuah program. Algoritma menyusun akar - akar $f(x) = 0$ sebagai berikut :</p>
 <ol>
 <li>Didefinisikan fungsi <em>$f$</em> dengan <em>$f(x)$</em> dan <em>$f'(x)$</em></li>
 <li>Ditentukan Epsilon sebagai Toleransi kesalahan serta iterasi maksimum untuk <em>Stopping Condition</em></li>
 <li>Dipilih tebakan awal <em>$x_0$</em> </li>
 <li>Dihitung <em>f($x_0$)</em> dan <em>f'($x_0$)</em></li>
-<li>Dihitung <em>$x_b = x_0 - \frac{f(x_0)}{f'(x_0)}f'(x_0) \neq 0$</em> .  jika <em>$f'(x_0) = 0$</em> kembali ke langkah - 3</li>
-<li>Jika <em>$\left | x_b - x_0 \right | &lt; \varepsilon$</em> . itersasi lebih dari iterasi maksimum tulis <em>$x_{hampiran} = x_b$</em> sebagai hasil hampiran akar; jika tidak, lanjutkan ke langkah berikutnya.</li>
+<li>Dihitung $x_b = x_0 - \frac{f(x_0)}{f'(x_0)}f'(x_0) \neq 0$ .  jika <em>$f'(x_0) = 0$</em> kembali ke langkah - 3</li>
+<li>Jika $\left | x_b - x_0 \right | &lt; \varepsilon$ . itersasi lebih dari iterasi maksimum tulis $x_{hampiran} = x_b$ sebagai hasil hampiran akar; jika tidak, lanjutkan ke langkah berikutnya.</li>
 <li>Ganti nilai <em>$x_0$</em> dengan <em>$x_0 = x_b$</em> dan kembali ke langkah-4</li>
 </ol>
 <hr />
