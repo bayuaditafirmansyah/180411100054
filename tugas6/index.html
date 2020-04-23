@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Materi 4 - Komputasi Numerik</title>
+  <title>Materi 6 - Komputasi Numerik</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Materi 4";
-    var mkdocs_page_input_path = "tugas4.md";
+    var mkdocs_page_name = "Materi 6";
+    var mkdocs_page_input_path = "tugas6.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -63,28 +63,22 @@
                     <li class="toctree-l1"><a class="reference internal" href="../tugas3/">Materi 3</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Materi 4</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#definisi">Definisi</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#algoritma-integral-trapezoida">Algoritma Integral Trapezoida</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#listing-program">Listing Program</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#hasil-running-list-program">Hasil Running List Program</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas4/">Materi 4</a>
                     </li>
                 </ul>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../tugas5/">Materi 5</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../tugas6/">Materi 6</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Materi 6</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#contoh">Contoh</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -108,7 +102,7 @@
     
       
     
-    <li>Materi 4</li>
+    <li>Materi 6</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -119,63 +113,61 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="recursive-trapezoid">Recursive Trapezoid</h1>
-<h2 id="definisi">Definisi</h2>
-<p>Metode trapesium merupakan metode integrasi numerik yang didasarkan pada penjumlahan segmen-segmen berbentuk trapesium. Apabila sebuah integral didekati dengan metode trapesium dengan satu segmen saja. Maka dapat dituliskan persamaan sebagai berikut :</p>
-<p><img alt="persamaan1" src="../tugas4.assets/persamaan1.png" /></p>
-<p>Estimasi berdasarkan satu interval</p>
-<p><img alt="estimasi-interval" src="../tugas4.assets/estimasi-interval.png" /></p>
-<h2 id="algoritma-integral-trapezoida">Algoritma Integral Trapezoida</h2>
-<ol>
-<li>
-<p>Definisikan y = f(x)</p>
-</li>
-<li>
-<p>Tentukan batas bawah (a) dan batas atas (b) integrasi</p>
-</li>
-<li>
-<p>Tentukan jumlah pembagi n</p>
-</li>
-<li>
-<p>Hitung h = (b-a)/2</p>
-</li>
-<li>
-<p>Hitung</p>
-</li>
-</ol>
-<p><img alt="luas" src="../tugas4.assets/luas.png" /></p>
-<h2 id="listing-program">Listing Program</h2>
-<p>Code program python untuk menyelesaikan integrasi numerik menggunakan metode Recursive Trapezoida dapat dibuat dengan listing program sebagai berikut :</p>
-<pre><code>def fungsi(x):
-    y = 1/(1+x)
-    return y
+                <h1 id="metode-euler">Metode Euler</h1>
+<blockquote>
+<p>Dalam matematika dan ilmu komputasi , <strong>metode Euler</strong> (juga disebut <strong>metode forward Euler</strong> ) adalah prosedur numerik orde pertama untuk menyelesaikan persamaan diferensial biasa (ODE) dengan nilai awal yang diberikan. Ini adalah metode eksplisit paling dasar untuk integrasi numerik persamaan diferensial biasa dan merupakan metode Runge-Kutta paling sederhana. Metode Euler dinamai Leonhard Euler, yang memperlakukannya dalam bukunya <em>Institutionum calculi integralis</em> (diterbitkan 1768-1870). </p>
+<p>Metode Euler adalah metode urutan pertama, yang berarti bahwa kesalahan lokal (kesalahan per langkah) sebanding dengan kuadrat ukuran langkah, dan kesalahan global (kesalahan pada waktu tertentu) sebanding dengan ukuran langkah. Metode Euler sering berfungsi sebagai dasar untuk membangun metode yang lebih kompleks, misalnya, metode prediktor-korektor.</p>
+</blockquote>
+<p>$$
+y=(\frac{dy}{dx})=f(x,y)
+$$</p>
+<p>dan nilai awal
+$$
+y(x_0)=y_0
+$$
+Dengan langkah h didefinisikan sebagai
+$$
+h=x_{n+1}-x_n
+$$
+Persamaan Euler untuk menyelesaikan persamaan diferensial biasa orde 1 dapat ditulis
+$$
+y_{n+1}=y_n+h\times f(x_n,y_n)
+$$</p>
+<h2 id="contoh">Contoh</h2>
+<p>Buatlah program untuk menyelesaikan persamaan differensial biasa berikut dengan menggunakan metode Euler
+$$
+\frac{dy}{dx}=1=x^2,y(1)=-4
+$$
+Untuk menentukan y(1.01), y(1.02) dan y(1.03).</p>
+<h2 id="source-code">Source Code</h2>
+<pre><code class="python">#Parameter untuk Euler
+y0 = -4
+x0 = float(input(&quot;masukkan nilai x0 :&quot;))
+n = 4
+h = 0.01
+y = 0
+hasil = y0
 
-print(&quot;f(x) = 1/(1+x)&quot;)
-a = float(input(&quot;Masukkan batas bawah: &quot;))
-b = float(input(&quot;Masukkan batas atas: &quot;))
-c = int(input(&quot;Masukkan n: &quot;))
-eror=[]
-print(&quot;iterasi&quot;, &quot;\t&quot;,&quot;N&quot;,&quot;\t\t&quot;,&quot;Trapezoid&quot;)
-for i in range(0,c):
-    n=2**i
-    h=(b-a)/n
+#Metode Euler
+for i in range(1,n):
+    hasil = y0 + h*(1 + (x0) ** 2)
+    x0 += h
+    y0 = hasil
+    print(&quot;Langkah&quot;+str(i)+&quot;: y&quot;+str(i)+&quot;= &quot;+ str(hasil))
 
-    xi = a
-    y=0
-    for j in range(1,n):
-        xi+=h
-        y+=fungsi(xi)
-    trapezoid = ((h)*(fungsi(a)+(2*y)+fungsi(b)))/2
-    eror.append(trapezoid)
-    print(i+1,&quot;\t\t&quot;,n,&quot;\t\t&quot;,trapezoid)
 
-hasil=(eror[-2]-eror[-1])
-print(hasil)
-print(&quot;Estimasi Eror Adalah : &quot;+str(hasil))
 </code></pre>
 
-<h3 id="hasil-running-list-program">Hasil Running List Program</h3>
-<p><img alt="running" src="../tugas4.assets/running.png" /></p>
+<p>Output</p>
+<pre><code class="python">========= RESTART: D:\0 KULIAH\SEMESTER 4\Komputasi Numerik\Euler.py =========
+masukkan nilai x0 :1
+Langkah1: y1= -3.98
+Langkah2: y2= -3.959799
+Langkah3: y3= -3.9393949999999998
+&gt;&gt;&gt; 
+</code></pre>
+
+<p>Sekian Terimakasih</p>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
 tex2jax: {inlineMath: [['$$','$$']]}
@@ -191,10 +183,8 @@ tex2jax: {inlineMath: [['$$','$$']]}
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tugas5/" class="btn btn-neutral float-right" title="Materi 5">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../tugas3/" class="btn btn-neutral" title="Materi 3"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tugas5/" class="btn btn-neutral" title="Materi 5"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -220,10 +210,8 @@ tex2jax: {inlineMath: [['$$','$$']]}
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../tugas3/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../tugas5/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../tugas5/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
