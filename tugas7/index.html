@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Materi 7 - Komputasi Numerik</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Materi 7";
+    var mkdocs_page_input_path = "tugas7.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Komputasi Numerik</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../materi/">Materi 1</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas2/">Materi 2</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas3/">Materi 3</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas4/">Materi 4</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas5/">Materi 5</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../tugas6/">Materi 6</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Materi 7</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#soal">Soal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#listing-program-1-nomer-3">Listing Program 1 Nomer 3</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#percobaan-ke-1">Percobaan ke-1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#percobaan-ke-2">Percobaan ke-2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#percobaan-ke-3">Percobaan ke-3</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#listing-program-2-nomer-4">Listing Program 2 Nomer 4</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#output">Output</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hitungan-manual">Hitungan Manual</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Komputasi Numerik</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Materi 7</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="monte-carlo-method">Monte Carlo Method</h1>
+<blockquote>
+<p>Metode Monte Carlo digunakan dengan istilah sampling statistik. Penggunaan metode Monte Carlo memerlukan sejumlah besar bilangan acak, dan hal tersebut semakin mudah dengan perkembangan pembangkit bilangan pseudoacak, yang jauh lebih cepat dan praktis dibandingkan dengan metode sebelumnya yang menggunakan tabel bilangan acak untuk sampling statistik.</p>
+<p>Metode Monte Carlo adalah algoritme komputasi untuk mensimulasikan berbagai perilaku sistem fisika dan matematika. Penggunaan klasik metode ini adalah untuk mengevaluasi integral definit, terutama integral multidimensi dengan syarat dan batasan yang rumit.</p>
+<p>Karena algoritme ini memerlukan pengulangan (repetisi) dan perhitungan yang amat kompleks, metode Monte Carlo pada umumnya dilakukan menggunakan komputer, dan memakai berbagai teknik simulasi komputer.</p>
+<p>Algoritme Monte Carlo adalah metode Monte Carlo numerik yang digunakan untuk menemukan solusi problem matematis (yang dapat terdiri dari banyak variabel) yang susah dipecahkan, misalnya dengan kalkulus integral, atau metode numerik lainnya.</p>
+</blockquote>
+<h2 id="soal">Soal</h2>
+<p><img alt="Soalmonte" src="../tugas7.assets/Soalmonte.png" /></p>
+<h2 id="listing-program-1-nomer-3">Listing Program 1 Nomer 3</h2>
+<pre><code class="python">from scipy import random
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = 0
+b = 2
+N = 2500
+
+#function for integral
+def func(x):
+    return (4-x**2)**0.5
+
+area = []
+for i in range(N):
+    xrand = np.zeros(N)
+
+    for i in range(len(xrand)):
+        xrand[i] = random.uniform(a,b)
+        integral = 0.0
+
+    for i in range(N):
+        integral+=func(xrand[i])
+
+    jawab = (b-a)/float(N)*integral
+    area.append(jawab)
+
+plt.title(&quot;Nilai phi&quot;)
+plt.hist(area,bins = 30, ec = 'black')
+plt.xlabel(&quot;Area&quot;)
+plt.show()
+</code></pre>
+
+<h3 id="percobaan-ke-1">Percobaan ke-1</h3>
+<p><img alt="" src="../tugas7.assets/montecarlo1.png" /></p>
+<p>Pada percobaan pertama Nilai Phi menunjukkan X=3.14465 y=255.824</p>
+<h3 id="percobaan-ke-2">Percobaan ke-2</h3>
+<p><img alt="" src="../tugas7.assets/montecarlo2.png" /></p>
+<p>Pada percobaan kedua Nilai Phi menunjukkan x=3.14118 y=286.582</p>
+<h3 id="percobaan-ke-3">Percobaan ke-3</h3>
+<p><img alt="" src="../tugas7.assets/montecarlo3.png" /></p>
+<p>Pada percobaan ketiga Nilai Phi menunjukkan x=3.13834 y=245.591</p>
+<h2 id="listing-program-2-nomer-4">Listing Program 2 Nomer 4</h2>
+<pre><code class="python">from scipy import random #memanggil library random dari scipy
+import numpy as np #memanggil library numpy
+
+a = -1
+b = 1
+N=100
+n=3
+xrand=np.zeros(N)#dx
+yrand=np.zeros(N)#dy
+zrand=np.zeros(N)#dz
+#fungsi np.zeros mengembalikan array baru dengan bentuk dari tipe yang diberikan, di mana nilai elemen sebagai 0.
+integral=0.0
+for i in range(n+1):
+    for i in range(len(xrand)):
+        xrand[i]=random.uniform(a,b)
+
+    for i in range(len(yrand)):
+        yrand[i]=random.uniform(a,b)
+
+    for i in range(len(zrand)):
+        zrand[i]=random.uniform(a,b)
+
+    def func(x,y,z):
+        return (x**2)+(y**2)+(z**2)
+
+
+    for i in range(N):
+        integral+=func(xrand[i],yrand[i],zrand[i])
+
+jwb=(b-a)/float(N)*integral
+print(&quot;Hasil : &quot;,jwb)
+</code></pre>
+
+<h3 id="output">Output</h3>
+<pre><code class="python">#Percobaan 1
+
+C:\Users\User\AppData\Local\Programs\Python\Python37\python.exe &quot;D:/Tugas Kuliah/Semester 4/Komnum/Nomer4.py&quot;
+Hasil :  7.985285659898637
+
+Process finished with exit code 0
+
+#Percobaan 2
+
+C:\Users\User\AppData\Local\Programs\Python\Python37\python.exe &quot;D:/Tugas Kuliah/Semester 4/Komnum/Nomer4.py&quot;
+Hasil :  8.02539169028922
+
+Process finished with exit code 0
+
+#Percobaan 3
+
+C:\Users\User\AppData\Local\Programs\Python\Python37\python.exe &quot;D:/Tugas Kuliah/Semester 4/Komnum/Nomer4.py&quot;
+Hasil :  8.012022095053624
+
+Process finished with exit code 0
+</code></pre>
+
+<p>Kesimpulannya jika dibandingan dengan perhitungan manual hasil dari itegral dengan metode monte carlo hampir mendekati dan bahkan sama hasilnya.</p>
+<h3 id="hitungan-manual">Hitungan Manual</h3>
+<p><img alt="" src="../tugas7.assets/hitManual.jpeg" /></p>
+<p>Sekian Terimakasih</p>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$$','$$']]}
+});
+</script>
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../tugas6/" class="btn btn-neutral" title="Materi 6"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../tugas6/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
